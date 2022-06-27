@@ -1,5 +1,7 @@
 Weekend project. Showing the NFTs minted to Ethereum on each block.
 
+Only setup required is adding an [Alchemy](https://alchemy.com/) API key to .env
+
 Other chains and better docs coming soon.
 
 Develop:
