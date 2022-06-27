@@ -39,6 +39,10 @@ const Container = styled.div`
   margin-top: 10rem;
   padding-left: 86px;
   padding-right: 86px;
+  @media (max-width: 768px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `
 
 const MintsGrid = styled.div`
@@ -112,12 +116,16 @@ const ArrowRow = styled.div`
 `
 const HeaderRow = styled.div`
   // position: fixed;
-  top: 0;
-  left: 0;
+  // top: 0;
+  // left: 0;
   display: flex;
-  width: 100%;
-  max-width: 800px;
-  align-items: start;
+  // width: 100%;
+  // max-width: 800px;
+  // align-items: start;
+  @media (max-width: 768px) {
+    // width: 100px;
+    display: block;
+  }
 `
 
 const BlockNumberText = styled.div`
