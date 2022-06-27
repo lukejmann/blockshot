@@ -1,0 +1,44 @@
+version: "1"
+services:
+  golang:
+    build:
+      context: golang
+      dockerfile: server.Dockerfile
+      target: dev
+    volumes:
+      - ./golang:/root
+    ports:
+      - "5001:5001"
+    env_file: .env.local
+    depends_on:
+      - postgres
+
+  worker:
+    build:
+      context: golang
+      dockerfile: worker.Dockerfile
+      target: dev
+    volumes:
+      - ./golang:/root
+    env_file: .env.local
+    depends_on:
+      - postgres
+
+  next:
+    stdin_open: true
+    build:
+      context: next
+      target: dev
+    volumes:
+      - ./next:/root
+    ports:
+      - "3000:3000"
+    env_file: .env.local
+    depends_on:
+      - postgres
+
+  # postgres is our primary data store
+  postgres:
+    build: postgres
+    volumes:
+      - ./golang/sql/schema:/docker-entrypoint-initdb.d/schema

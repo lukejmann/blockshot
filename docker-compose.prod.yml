@@ -1,0 +1,38 @@
+version: "1"
+services:
+  golang-prod:
+    restart: always
+    build:
+      context: golang
+      dockerfile: server.Dockerfile
+      target: prod
+    ports:
+      - "5001:5001"
+    env_file: .env
+    depends_on:
+      - postgres
+
+  worker-prod:
+    build:
+      context: golang
+      dockerfile: worker.Dockerfile
+      target: prod
+    env_file: .env
+    depends_on:
+      - postgres
+
+  next-prod:
+    stdin_open: true
+    build:
+      context: next
+      target: prod
+    ports:
+      - "3000:3000"
+    env_file: .env
+
+  postgres:
+    build: postgres
+    ports:
+      - "53:53"
+    volumes:
+      - ./golang/sql/schema:/docker-entrypoint-initdb.d/schema

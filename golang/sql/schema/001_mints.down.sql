@@ -1,0 +1,2 @@
+DROP SCHEMA mints;
+DROP TABLE mints;
