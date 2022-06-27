@@ -16,4 +16,4 @@ Production:
 docker compose -f docker-compose.prod.yml  up --build
 ```
 
-[Demo](https://lukejmann-blockshot-95vjrpjwh7gpw-3000.githubpreview.dev/)
+[Demo](https://blockshot.vercel.app/)
